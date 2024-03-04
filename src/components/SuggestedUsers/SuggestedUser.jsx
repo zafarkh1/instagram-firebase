@@ -1,29 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, Button, Flex, Text } from "@chakra-ui/react";
 
-const SuggestedUser = ({ avatar, username }) => {
+const SuggestedUser = ({ avatar, username, followers }) => {
+  const [isFollowed, setIsFollowed] = useState(true);
   return (
     <>
-      <Flex justifyContent={"space-between"} alignItems={"center"} my={4}>
+      <Flex
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        my={4}
+        w={"full"}
+      >
         <Flex gap={3} alignItems={"center"}>
-          <Avatar src={avatar} size={"sm"} name={username} />
+          <Avatar src={avatar} size={"md"} name={username} />
           <Flex direction={"column"} alignItems={"flex-start"}>
-            <Text>{username}</Text>
-            <Text fontSize={12} color={"gray.300"}>
-              1000 followers
+            <Text fontSize={12} fontWeight={"bold"}>
+              {username}
+            </Text>
+            <Text fontSize={11} color={"gray.500"}>
+              {followers} followers
             </Text>
           </Flex>
         </Flex>
         <Button
-          color={"blue.500"}
+          color={"blue.400"}
           bg={"transparent"}
-          fontWeight={"bold"}
+          fontWeight={"medium"}
           p={0}
-          fontSize={14}
+          fontSize={13}
           _hover={{ color: "white" }}
+          cursor={"pointer"}
+          h={"max-content"}
           transition={"0.2s ease-in-out"}
+          onClick={() => setIsFollowed(!isFollowed)}
         >
-          Follow
+          {isFollowed ? "Follow" : "Unfollow"}
         </Button>
       </Flex>
     </>

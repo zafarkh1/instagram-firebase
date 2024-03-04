@@ -1,32 +1,31 @@
-import { Avatar, Box, Button, Flex, Text } from "@chakra-ui/react";
-import React from "react";
+import { Avatar, Flex, Link, Text } from "@chakra-ui/react";
+
+import { Link as RouterLink } from "react-router-dom";
 
 const SuggestedHeader = () => {
   return (
     <>
-      <Flex
-        alignItems={"center"}
-        justifyContent={"space-between"}
-        fontSize={14}
-        mb={4}
-      >
-        <Flex alignItems={"center"} gap={3}>
-          <Box>
-            <Avatar src="/profilepic.png" size={"sm"} alt="profile img" />
-          </Box>
-          <Text>asaprogrammer_</Text>
+      <Flex alignItems={"center"} justifyContent={"space-between"} w={"full"}>
+        <Flex alignItems={"center"} gap={2}>
+          <Avatar src="/profilepic.png" size={"lg"} name="profile img" />
+          <Text fontSize={12} fontWeight={"bold"}>
+            asaprogrammer_
+          </Text>
         </Flex>
-        <Button
+        <Link
+          as={RouterLink}
+          to={"/auth"}
           color={"blue.500"}
-          bg={"transparent"}
           fontWeight={"bold"}
+          cursor={"pointer"}
+          style={{ textDecoration: "none" }}
           p={0}
           fontSize={14}
           _hover={{ color: "white" }}
           transition={"0.2s ease-in-out"}
         >
           Log out
-        </Button>
+        </Link>
       </Flex>
       <Flex
         justifyContent={"space-between"}
@@ -34,10 +33,12 @@ const SuggestedHeader = () => {
         fontSize={14}
         my={2}
       >
-        <Text color={"gray.400"} fontWeight={"bold"}>
+        <Text color={"gray.500"} fontWeight={"bold"} fontSize={12}>
           Suggested for you
         </Text>
-        <Text>See All</Text>
+        <Text _hover={{color: "gray.500"}} cursor={'pointer'} fontWeight={"bold"} fontSize={12}>
+          See All
+        </Text>
       </Flex>
     </>
   );
