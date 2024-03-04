@@ -7,12 +7,24 @@ const SuggestedUsers = () => {
   return (
     <Box my={10}>
       <SuggestedHeader />
-      <SuggestedUser avatar="/img1.png" username="olivia" followers={1352} />
-      <SuggestedUser avatar="/img2.png" username="cristiano" followers={1085} />
-      <SuggestedUser avatar="/img3.png" username="isla" followers={1400} />
-      <SuggestedUser avatar="/img4.png" username="erling" followers={852} />
+      <SuggestedUser
+        avatar="https://bit.ly/dan-abramov"
+        username="Dan Abramov"
+        followers={1352}
+      />
+      <SuggestedUser
+        avatar="https://bit.ly/ryan-florence"
+        username="Ryan Florence"
+        followers={1085}
+      />
+      <SuggestedUser
+        avatar="https://bit.ly/code-beast"
+        username="Code Beast"
+        followers={1400}
+      />
+      <SuggestedUser avatar="/img4.png" username="Erling" followers={852} />
       <Box fontSize={12} color={"gray.500"} mt={5} alignSelf={"start"}>
-        &#169; 2024 By{" "}
+        &#169; 2024 Built By{" "}
         <Link
           href="https://t.me/developer_plus_plus"
           target="_blank"
