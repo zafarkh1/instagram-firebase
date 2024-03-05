@@ -13,10 +13,13 @@ import {
   NotificationsLogo,
   UnlikeLogo,
 } from "../../assets/constants";
+import { useLocation } from "react-router-dom";
 
 const PostFooter = ({ username }) => {
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(1000);
+
+  const { pathname } = useLocation();
 
   const handleLiked = () => {
     if (liked) {
@@ -29,7 +32,7 @@ const PostFooter = ({ username }) => {
   };
 
   return (
-    <Box mb={10}>
+    <Box mb={10} mt={"auto"}>
       <Flex alignItems={"center"} gap={4} w={"full"} pt={0} mb={2} mt={4}>
         <Box onClick={handleLiked} cursor={"pointer"} fontSize={18}>
           {!liked ? <NotificationsLogo /> : <UnlikeLogo />}
@@ -41,15 +44,20 @@ const PostFooter = ({ username }) => {
       <Text fontWeight={600} fontSize={"sm"}>
         {likes} likes
       </Text>
-      <Text fontWeight={700} fontSize={"sm"}>
-        {username}{" "}
-        <Text as={"span"} fontWeight={400}>
-          Feeling good
-        </Text>
-      </Text>
-      <Text fontSize={"sm"} color={"gray"}>
-        View 1000 comments
-      </Text>
+
+      {pathname === "/" ? (
+        <>
+          <Text fontWeight={700} fontSize={"sm"}>
+            {username}{" "}
+            <Text as={"span"} fontWeight={400}>
+              Feeling good
+            </Text>
+          </Text>
+          <Text fontSize={"sm"} color={"gray"}>
+            View 1000 comments
+          </Text>
+        </>
+      ) : null}
       <Flex
         justifyContent={"space-between"}
         gap={2}
