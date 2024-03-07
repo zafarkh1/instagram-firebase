@@ -1,6 +1,5 @@
 import { Box, Flex, Img, Text, VStack } from "@chakra-ui/react";
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 import Signup from "./Signup";
 import GoogleAuth from "./GoogleAuth";
