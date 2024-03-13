@@ -109,7 +109,7 @@ const Sidebar = () => {
           openDelay={500}
           display={{ base: "block", md: "none" }}
         >
-          <Link
+          <Flex
             onClick={handleSignOut}
             alignItems={"center"}
             _hover={{ bg: "whiteAlpha.400" }}
@@ -129,7 +129,7 @@ const Sidebar = () => {
             >
               Log out
             </Button>
-          </Link>
+          </Flex>
         </Tooltip>
       </Flex>
     </Box>

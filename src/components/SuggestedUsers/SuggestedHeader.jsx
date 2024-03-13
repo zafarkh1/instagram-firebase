@@ -1,31 +1,39 @@
-import { Avatar, Flex, Link, Text } from "@chakra-ui/react";
-
-import { Link as RouterLink } from "react-router-dom";
+import { Avatar, Button, Flex, Text } from "@chakra-ui/react";
+import useLogout from "../../hooks/useLogout";
+import useAuthStore from "../../store/authStore";
+import { Link } from "react-router-dom";
 
 const SuggestedHeader = () => {
+  const { isLoggingOut, handleSignOut } = useLogout();
+  const authUser = useAuthStore((state) => state.user);
   return (
     <>
       <Flex alignItems={"center"} justifyContent={"space-between"} w={"full"}>
         <Flex alignItems={"center"} gap={2}>
-          <Avatar src="/profilepic.png" size={"lg"} name="profile img" />
-          <Text fontSize={12} fontWeight={"bold"}>
-            asaprogrammer_
-          </Text>
+          <Link to={`${authUser?.username}`}>
+            <Avatar src={authUser?.profilePicURL} size={"lg"} />
+          </Link>
+          <Link to={`${authUser.username}`}>
+            <Text fontSize={12} fontWeight={"bold"}>
+              {authUser?.username}
+            </Text>
+          </Link>
         </Flex>
-        <Link
-          as={RouterLink}
-          to={"/auth"}
+        <Button
+          size={"xs"}
+          bg={"transparent"}
+          _hover={{ background: "transparent" }}
           color={"blue.500"}
           fontWeight={"bold"}
           cursor={"pointer"}
-          style={{ textDecoration: "none" }}
           p={0}
           fontSize={14}
-          _hover={{ color: "white" }}
           transition={"0.2s ease-in-out"}
+          isLoading={isLoggingOut}
+          onClick={handleSignOut}
         >
           Log out
-        </Link>
+        </Button>
       </Flex>
       <Flex
         justifyContent={"space-between"}
@@ -36,7 +44,12 @@ const SuggestedHeader = () => {
         <Text color={"gray.500"} fontWeight={"bold"} fontSize={12}>
           Suggested for you
         </Text>
-        <Text _hover={{color: "gray.500"}} cursor={'pointer'} fontWeight={"bold"} fontSize={12}>
+        <Text
+          _hover={{ color: "gray.500" }}
+          cursor={"pointer"}
+          fontWeight={"bold"}
+          fontSize={12}
+        >
           See All
         </Text>
       </Flex>

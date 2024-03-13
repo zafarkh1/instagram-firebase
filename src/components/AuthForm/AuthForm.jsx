@@ -6,7 +6,6 @@ import GoogleAuth from "./GoogleAuth";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
-  // const navigate = useNavigate();
 
   return (
     <>
@@ -30,7 +29,7 @@ const AuthForm = () => {
             <Box h={"1px"} bg={"gray.400"} flex={2} />
           </Flex>
 
-          <GoogleAuth/>
+          <GoogleAuth prefix={isLogin ? "Log in" : "Sign up"} />
         </VStack>
       </Box>
 

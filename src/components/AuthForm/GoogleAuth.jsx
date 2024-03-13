@@ -1,11 +1,11 @@
 import { Flex, Img, Text } from "@chakra-ui/react";
 
-const GoogleAuth = () => {
+const GoogleAuth = ({prefix}) => {
   return (
     <Flex justifyContent={"center"} alignItems={"center"} cursor={"pointer"}>
       <Img src="/google.png" w={5} alt="Google logo" />
       <Text mx={2} color={"blue.500"}>
-        Log in with Google
+        {prefix} with Google
       </Text>
     </Flex>
   );
