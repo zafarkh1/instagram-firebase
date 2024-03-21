@@ -13,7 +13,7 @@ const useLogin = () => {
 
   const login = async (inputs) => {
     if (!inputs.email || !inputs.password) {
-      showToast("Error", "Please fill all the fields", "error");
+      return showToast("Error", "Please fill all the fields", "error");
     }
 
     try {

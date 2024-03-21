@@ -7,8 +7,10 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
+import useUserProfileStore from "../../store/userProfileStore";
 
 const ProfileHeader = () => {
+  const { userProfile } = useUserProfileStore();
   return (
     <Flex
       direction={{ base: "column", sm: "row" }}
@@ -20,7 +22,7 @@ const ProfileHeader = () => {
         alignSelf={"flex-start"}
         mx={"auto"}
       >
-        <Avatar src="/profilepic.png" name="Profile img" />
+        <Avatar src={userProfile.profilePicURL} name="Profile img" />
       </AvatarGroup>
 
       <VStack alignItems={"flex-start"} gap={2} mx={"auto"} flex={1}>
@@ -31,7 +33,9 @@ const ProfileHeader = () => {
           alignItems={"center"}
           w={"full"}
         >
-          <Text fontSize={{ base: "sm", md: "lg" }}>Zafar</Text>
+          <Text fontSize={{ base: "sm", md: "lg" }}>
+            {userProfile.username}
+          </Text>
           <Flex justifyContent={"center"} alignItems={"center"} gap={4}>
             <Button
               bg={"white"}
@@ -47,19 +51,19 @@ const ProfileHeader = () => {
         <Flex alignItems={"center"} gap={{ base: 2, sm: 4 }}>
           <Text fontSize={{ base: "xs", md: "sm" }}>
             <Text as={"span"} fontWeight={"bold"} mr={1}>
-              3
+              {userProfile.posts.length}
             </Text>
             Posts
           </Text>
           <Text fontSize={{ base: "xs", md: "sm" }}>
             <Text as={"span"} fontWeight={"bold"} mr={1}>
-              130
+              {userProfile.follwers.length}
             </Text>
             Followers
           </Text>
           <Text fontSize={{ base: "xs", md: "sm" }}>
             <Text as={"span"} fontWeight={"bold"} mr={1}>
-              141
+              {userProfile.following.length}
             </Text>
             Following
           </Text>
@@ -67,10 +71,10 @@ const ProfileHeader = () => {
 
         <Flex alignItems={"center"} gap={4}>
           <Text fontSize={"sm"} fontWeight={"bold"}>
-            Zafar
+            {userProfile.fullName}
           </Text>
         </Flex>
-        <Text fontSize={"sm"}>There would be your ads</Text>
+        <Text fontSize={"sm"}>{userProfile.bio}</Text>
       </VStack>
     </Flex>
   );
